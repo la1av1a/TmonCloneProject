@@ -4,7 +4,7 @@ name: Requirement for push master
 on:
   push:
     branches:
-      - '*'
+      - 'setup-frontend'
 
 jobs:
   test:
