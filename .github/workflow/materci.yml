@@ -6,13 +6,17 @@ on:
     branches: [ setup-frontend ]
 
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
   test:
+    needs: setup
     strategy:
       matrix:
         target: [frontend, backend]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
     - name: Test for ${{ matrix.target }}
       run: |
         cd ${{ matrix.target }}
