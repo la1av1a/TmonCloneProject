@@ -1,0 +1,27 @@
+
+name: Requirement for push master
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        target: [frontend, backend]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Test for ${{ matrix.target }}
+      run: |
+        cd ${{ matrix.target }}
+        ls -al
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - name: 'Build Seq'
+      run: echo "this is build seq"
