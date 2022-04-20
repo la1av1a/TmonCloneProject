@@ -1,5 +1,9 @@
-import { CountActions, CounterActionType } from './action'
-import { createReducer } from 'typesafe-actions'
+import { CountActions } from './actions'
+import * as actions from './actions'
+import { ActionType, createReducer } from 'typesafe-actions'
+import { produce } from 'immer'
+
+export type CounterActionType = ActionType<typeof actions>;
 
 export interface CounterState {
   count: number;
@@ -11,9 +15,9 @@ const initialState: CounterState = {
 };
 
 const counter = createReducer<CounterState, CounterActionType>(initialState, {
-  [CountActions.IncCount]: (state: CounterState) => ({ count: state.count + 1 }), 
-  [CountActions.DecCount]: (state: CounterState) => ({ count: state.count - 1 }),
-  [CountActions.SetCount]: (state: CounterState, action) => ({ count: state.count + action.payload }) 
+  [CountActions.INC_COUNT]: (state: CounterState) => produce(state,draft => { draft.count++; }), 
+  [CountActions.DEC_COUNT]: (state: CounterState) => produce(state,draft => { draft.count--; }),
+  [CountActions.SET_COUNT]: (state: CounterState, action) => produce(state,draft => { draft.count += action.payload; }) 
 });
 
 export default counter
