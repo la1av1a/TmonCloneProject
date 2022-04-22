@@ -6,7 +6,7 @@ name: Frontend CI
 on:
   push:
     branches:
-      - master
+      - main
     paths: 
       - "ourProject/frontend/**"
       - "!ourProject/backend/**"
