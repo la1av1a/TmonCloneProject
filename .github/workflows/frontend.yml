@@ -5,9 +5,11 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - master
+    paths: 
+      - "frontend/**"
+      - "!backend/**"
 
 defaults:
   run:
