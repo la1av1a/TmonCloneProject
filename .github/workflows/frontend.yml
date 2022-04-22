@@ -8,8 +8,8 @@ on:
     branches:
       - '*'
     paths: 
-      - "ourProject/frontend/**"
-      - "!ourProject/backend/**"
+      - "frontend/**"
+      - "!backend/**"
 
 defaults:
   run:
