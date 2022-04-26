@@ -1,22 +1,19 @@
 import GithubProfile, { GithubProfileProps } from "./GithubProfile";
 import { FormEvent, useState, ChangeEvent } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { githubProfileSelector } from "redux/github";
 import { getUserProfileThunk } from "redux/github/thunk";
+import { useThunk } from "redux/common";
+
+
 const GithubProfileContainer = (): JSX.Element => {
-    const data: GithubProfileProps = {
-        bio: '',
-        blog: '',
-        name: 'test',
-        thumbnail: '',
-    }
     const [input, setInput] = useState('');
 
     const profileData = useSelector(githubProfileSelector);
-    const dispatch = useDispatch();
+    const getProfile = useThunk(getUserProfileThunk);
   
     const onSubmitUsername = (username: string) => {
-      dispatch(getUserProfileThunk(username) as any); // need to convert type casting
+        getProfile(username); // need to convert type casting
     };
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
