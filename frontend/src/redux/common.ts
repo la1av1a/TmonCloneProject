@@ -17,11 +17,11 @@ export const getInitialAsyncState = (): AsyncInfo => ({
     error: null
 })
 
-export const useThunk = <T extends any[]>(thunkActinos: (...args: T) => ThunkAction<void, RootState, null, AnyAction>) => {
+export const useThunk = <T extends any[]>(thunkFunction: (...args: T) => ThunkAction<void, RootState, null, AnyAction>) => {
     const dispatch: AppDispatch = useDispatch();
     
     return async (...args: T) => {
-        await dispatch(thunkActinos(...args))
+        await dispatch(thunkFunction(...args))
     };
 }
 
