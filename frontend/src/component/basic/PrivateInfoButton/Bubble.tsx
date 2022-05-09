@@ -7,13 +7,13 @@ interface PrivateInfoButtonProps {
   onClick: () => void;
 }
 
-const PrivateInfoButton = (props: PrivateInfoButtonProps) => {
+const PrivateInfoBubbleInfoButton = (props: PrivateInfoButtonProps) => {
   return (
     <Grid direction='column'>
-      <Box>img</Box>
-      <Box>span</Box>
+      <Grid>img</Grid>
+      <Grid>span</Grid>
     </Grid>
   );
 };
 
-export default PrivateInfoButton;
+export default PrivateInfoBubbleInfoButton;
