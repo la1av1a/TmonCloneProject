@@ -1,18 +1,37 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import styled from "styled-components";
+import PrivateInfoDefaultButton, { PrivateInfoDefaultButtonProps } from "./Default";
 
-interface PrivateInfoButtonProps {
-  src: string;
-  title: string;
-  onClick: () => void;
-}
+export interface PrivateInfoBubbleButtonProps extends PrivateInfoDefaultButtonProps {
+  bubbleCount: number
+};
 
-const PrivateInfoBubbleInfoButton = (props: PrivateInfoButtonProps) => {
+const ContainerBox = styled(Box)`
+  display: inline-flex;
+  position: relative;
+`;
+
+const Dot = styled(Box)`
+  position: absolute;
+  width: 1.5rem;
+  height: 1.3125rem;
+  border-radius: 100%;
+  background-color: #f27935;
+  right: 0rem;
+  top: 0rem;
+  color: #fff;
+`
+
+const PrivateInfoBubbleInfoButton = ({ bubbleCount, ...args }: PrivateInfoBubbleButtonProps) => {
+
   return (
-    <Grid direction='column'>
-      <Grid>img</Grid>
-      <Grid>span</Grid>
-    </Grid>
+    <ContainerBox>
+      <PrivateInfoDefaultButton {...args} />
+      <Dot>
+        <Typography align="center">{bubbleCount}</Typography>
+      </Dot>
+    </ContainerBox>
   );
 };
 

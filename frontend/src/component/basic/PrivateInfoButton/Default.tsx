@@ -1,11 +1,10 @@
 import styled, { CSSProperties } from "styled-components";
 import { Typography } from "@mui/material";
+import ButtonBase from '@mui/material/ButtonBase';
 import { Box } from "@mui/system";
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { useMemo } from "react";
-import Icon from '@mui/material/Icon';
 
-interface PrivateInfoButtonProps {
+export interface PrivateInfoDefaultButtonProps {
   src: string | React.ElementType;
   title: string;
   onClick: () => void;
@@ -13,6 +12,8 @@ interface PrivateInfoButtonProps {
 
 const ContainerBox = styled(Box)`
   display: inline-flex;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem !important;
   flex-direction: column;
 `;
 
@@ -22,16 +23,17 @@ const ImageBox = styled(Box)`
 `;
 
 const TypoBox = styled(Box)`
+  text-align: center;
   margin-top: 0.5rem;
   max-width: 3.5rem;
 `;
 
-const PrivateInfoDefaultButton = (props: PrivateInfoButtonProps) => {
+const PrivateInfoDefaultButton = (props: PrivateInfoDefaultButtonProps) => {
 
   const imageComponent = useMemo(() => {
     const currentProperties: CSSProperties = {
-      width: '2rem',
-      height: '2rem'
+      width: '2.5rem',
+      height: '2.5rem'
     }
     if (typeof props.src === 'string') {
       return <img style={currentProperties} src={props.src} />
@@ -43,12 +45,12 @@ const PrivateInfoDefaultButton = (props: PrivateInfoButtonProps) => {
   }, [props.src])
 
   return (
-    <ContainerBox>
+    <ContainerBox onClick={props.onClick}>
       <ImageBox>
         {imageComponent}
       </ImageBox>
       <TypoBox>
-        <Typography style={{ wordWrap: "break-word" }} align="center" variant="caption">{props.title}</Typography>
+        <Typography style={{ wordWrap: "break-word" }} variant="caption">{props.title}</Typography>
       </TypoBox>
     </ContainerBox>
   );

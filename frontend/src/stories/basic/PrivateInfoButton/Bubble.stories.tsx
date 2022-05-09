@@ -1,15 +1,13 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 
 import PrivateInfoBubbleButton from 'component/basic/PrivateInfoButton/Bubble'
+import { action } from '@storybook/addon-actions';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Example/PrivateInfoButton/Bubble',
   component: PrivateInfoBubbleButton,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 } as ComponentMeta<typeof PrivateInfoBubbleButton>;
 
-export const Bubble = () => <PrivateInfoBubbleButton src='Test' title='Test2' onClick={() => {}} />;
+export const Bubble = () => <PrivateInfoBubbleButton bubbleCount={5} src='https://picsum.photos/200' title='Test2' onClick={action('Bubble Click')} />;
 
 
