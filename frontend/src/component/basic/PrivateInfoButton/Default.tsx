@@ -7,7 +7,7 @@ import { useMemo } from "react";
 export interface PrivateInfoDefaultButtonProps {
   src: string | React.ElementType;
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const ContainerBox = styled(Box)`
