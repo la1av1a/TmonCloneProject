@@ -2,7 +2,6 @@ import { ComponentMeta, storiesOf } from '@storybook/react';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PrivateInfoDefaultButton from 'component/basic/PrivateInfoButton/Default';
 import { action } from '@storybook/addon-actions'
-import useState from 'storybook-addon-state';
 
 export default {
   title: 'Example/PrivateInfoButton/Default',
